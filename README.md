@@ -288,6 +288,9 @@ GROUP BY EDU.courier_info.first_name ,EDU.courier_info.last_name;1.sql…]()
 
 5.Выведи название продукта и его спрос. Если продукт купили более 3 шт. за всё время, то "Высокий спрос", если 3 и менее шт., то "Низкий спрос".
 
+![Снимок](https://github.com/user-attachments/assets/7af83bb6-84bb-4cd0-a7f9-39588ad8513b)
+
+
 [Uploading SQLQuery5.1.sql…]()
 
 SELECT EDU.products.menu_name,
