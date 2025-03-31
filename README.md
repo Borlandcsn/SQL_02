@@ -115,9 +115,46 @@ ON EDU.orders.customer_id = EDU.customers.customer_id;sql…]()
 
 ![3 1](https://github.com/user-attachments/assets/a2003d82-3e68-4cb5-a092-a61ddfaff313)
 
-[Uploading SQLQuery3.1.sql…]
+[Uploading SQLQuery3.2.sql…]()
 
 BEGIN TRANSACTION
+
+SELECT *
+
+FROM EDU.courier_info
+
+INSERT INTO EDU.courier_info(
+
+		first_name,
+  
+		last_name,
+  
+		phone_number,
+  
+		delivery_type
+	)
+ 
+VALUES ('Kate', 'Radriges', 14163203211, 'bike'),
+
+	('Jennifer', 'Gordon', 14163211252, 'car'),
+ 
+	('Mario', 'Lorenson', 14161224054, 'foot'),
+ 
+	('Bella', 'Visputchu', 14167581967, 'foot'),
+ 
+	('Erica', 'Evans', 14167618582, 'bike')
+ 
+SELECT *
+
+FROM EDU.courier_info ROLLBACK TRANSACTION
+
+SELECT *
+
+FROM EDU.courier_info
+
+Второй способ 
+
+[Uploading SBEGIN TRANSACTION
 
 SELECT *
 
@@ -152,6 +189,7 @@ INSERT INTO EDU.courier_info(
 		phone_number,
   
 		delivery_type
+  
 	)
  
 SELECT 'Jennifer',
@@ -171,6 +209,7 @@ INSERT INTO EDU.courier_info(
 		phone_number,
   
 		delivery_type
+  
 	)
  
 SELECT 'Mario',
@@ -227,45 +266,8 @@ FROM EDU.courier_info ROLLBACK TRANSACTION
 
 SELECT *
 
-FROM EDU.courier_info()
+FROM EDU.courier_infoQLQuery3.1.sql…]()
 
-
-[Uploading SQLQuery3.2.sql…]()
-
-BEGIN TRANSACTION
-
-SELECT *
-
-FROM EDU.courier_info
-
-INSERT INTO EDU.courier_info(
-
-		first_name,
-  
-		last_name,
-  
-		phone_number,
-  
-		delivery_type
-	)
- 
-VALUES ('Kate', 'Radriges', 14163203211, 'bike'),
-
-	('Jennifer', 'Gordon', 14163211252, 'car'),
- 
-	('Mario', 'Lorenson', 14161224054, 'foot'),
- 
-	('Bella', 'Visputchu', 14167581967, 'foot'),
- 
-	('Erica', 'Evans', 14167618582, 'bike')
- 
-SELECT *
-
-FROM EDU.courier_info ROLLBACK TRANSACTION
-
-SELECT *
-
-FROM EDU.courier_info
 
  4.Из списка доставок [Reskilling].[EDU].[delivery_list] выведи фамилию курьера [last_name] + имя курьера [first_name] (назови столбец Курьер) и количество его доставленных заказов. 
 
