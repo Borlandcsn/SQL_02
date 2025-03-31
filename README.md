@@ -7,7 +7,9 @@ a. Добавить в таблицу [Reskilling].[EDU].[customers] себя к
 
 ![1 1](https://github.com/user-attachments/assets/bbb0eeed-4f5d-47ad-83d8-d2defa9e1e8b)
 
-[Uploading SQLQuery1.1sql.sql…]()INSERT INTO EDU.customers(first_name, last_name, phone_number, district,street, house, apartment)
+[Uploading SQLQuery1.1sql.sql…]()
+
+INSERT INTO EDU.customers(first_name, last_name, phone_number, district,street, house, apartment)
 VALUES ('Vladimir', 'Savin', 79998788028, 'South', 'Rabinovaja',55, 160);
 
 SELECT *
@@ -19,7 +21,9 @@ b. В созданной строке в таблице [Reskilling].[EDU].[cust
 
 ![1 2](https://github.com/user-attachments/assets/509278ff-a295-4038-9517-fec4ea0a346a)
 
-[Uploading SQLQuery1.2.sql…]()BEGIN TRANSACTION;
+[Uploading SQLQuery1.2.sql…]()
+
+BEGIN TRANSACTION;
     SELECT *
     FROM EDU.customers
     WHERE customer_id = 78;
@@ -41,6 +45,7 @@ c. Удалить созданную строку в таблице [Reskilling]
 ![1 3](https://github.com/user-attachments/assets/06334f1e-854f-473b-869e-ac812dc08c91)
 
 [Uploading SQLQuery1.3-- Start a new transaction
+
 BEGIN TRANSACTION;
     SELECT *
     FROM EDU.customers
@@ -61,7 +66,9 @@ ROLLBACK TRANSACTION;
 
 ![2 1](https://github.com/user-attachments/assets/30f4c12a-dd91-427a-87c2-2e8d0dab256b)
 
-[Uploading SQLQuery2.1.SELECT EDU.orders.order_id, 
+[Uploading SQLQuery2.1.
+
+SELECT EDU.orders.order_id, 
        EDU.customers.last_name, 
        EDU.customers.first_name, 
        EDU.orders.date_get
@@ -74,7 +81,9 @@ ON EDU.orders.customer_id = EDU.customers.customer_id;sql…]()
 
 ![3 1](https://github.com/user-attachments/assets/a2003d82-3e68-4cb5-a092-a61ddfaff313)
 
-[Uploading SQLQuery3.1.sql…]BEGIN TRANSACTION
+[Uploading SQLQuery3.1.sql…]
+
+BEGIN TRANSACTION
 SELECT *
 FROM EDU.courier_info
 INSERT INTO EDU.courier_info(
@@ -133,7 +142,9 @@ SELECT *
 FROM EDU.courier_info()
 
 
-[Uploading SQLQuery3.2.sql…]()BEGIN TRANSACTION
+[Uploading SQLQuery3.2.sql…]()
+
+BEGIN TRANSACTION
 SELECT *
 FROM EDU.courier_info
 INSERT INTO EDU.courier_info(
@@ -156,7 +167,9 @@ FROM EDU.courier_info
 
  ![4 1](https://github.com/user-attachments/assets/ab0faabf-b5ac-47d6-9bbb-18f2c9923434)
 
-[Uploading SQLQuery4.SELECT CONCAT(EDU.courier_info.last_name,' ' ,EDU.courier_info.first_name) AS ������, COUNT(EDU.delivery_list.courier_id) AS �����������
+[Uploading SQLQuery4.
+
+SELECT CONCAT(EDU.courier_info.last_name,' ' ,EDU.courier_info.first_name) AS ������, COUNT(EDU.delivery_list.courier_id) AS �����������
 FROM EDU.courier_info INNER JOIN EDU.delivery_list
 ON EDU.courier_info.courier_id = EDU.delivery_list.courier_id
 WHERE taken = 'YES'
@@ -167,7 +180,9 @@ GROUP BY EDU.courier_info.first_name ,EDU.courier_info.last_name;1.sql…]()
 
 5.Выведи название продукта и его спрос. Если продукт купили более 3 шт. за всё время, то "Высокий спрос", если 3 и менее шт., то "Низкий спрос".
 
-[Uploading SQLQuery5.1.sql…]()SELECT EDU.products.menu_name,
+[Uploading SQLQuery5.1.sql…]()
+
+SELECT EDU.products.menu_name,
 	CASE
 		WHEN SUM(EDU.orders_products.quantity) > 3 THEN '������� �����'
 		ELSE '������ �����'
