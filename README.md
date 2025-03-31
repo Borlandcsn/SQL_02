@@ -24,18 +24,31 @@ b. В созданной строке в таблице [Reskilling].[EDU].[cust
 [Uploading SQLQuery1.2.sql…]()
 
 BEGIN TRANSACTION;
+
     SELECT *
+    
     FROM EDU.customers
+    
     WHERE customer_id = 78;
+    
 UPDATE EDU.customers
+
 SET district = 'North'
+
 WHERE customer_id = 78;
+
     SELECT *
+    
     FROM EDU.customers
+    
     WHERE customer_id = 78;
+    
 ROLLBACK TRANSACTION;
+
     SELECT *
+    
     FROM EDU.customers
+    
     WHERE customer_id = 78;
 
 
