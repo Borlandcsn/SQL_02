@@ -10,9 +10,11 @@ a. Добавить в таблицу [Reskilling].[EDU].[customers] себя к
 [Uploading SQLQuery1.1sql.sql…]()
 
 INSERT INTO EDU.customers(first_name, last_name, phone_number, district,street, house, apartment)
+
 VALUES ('Vladimir', 'Savin', 79998788028, 'South', 'Rabinovaja',55, 160);
 
 SELECT *
+
 FROM EDU.customers;
 
 
@@ -60,18 +62,31 @@ c. Удалить созданную строку в таблице [Reskilling]
 [Uploading SQLQuery1.3-- Start a new transaction
 
 BEGIN TRANSACTION;
+
     SELECT *
+    
     FROM EDU.customers
+    
     WHERE customer_id = 78;
+    
 DELETE FROM EDU.customers
+
 WHERE customer_id = 78;
+
     SELECT *
+    
     FROM EDU.customers
+    
     WHERE customer_id = 78;
+    
 ROLLBACK TRANSACTION;
+
     SELECT *
+    
     FROM EDU.customers
+    
     WHERE customer_id = 78;
+    
 .sql…]()
 
 
@@ -82,11 +97,17 @@ ROLLBACK TRANSACTION;
 [Uploading SQLQuery2.1.
 
 SELECT EDU.orders.order_id, 
+
        EDU.customers.last_name, 
+       
        EDU.customers.first_name, 
+       
        EDU.orders.date_get
+       
 FROM EDU.orders 
+
 INNER JOIN EDU.customers
+
 ON EDU.orders.customer_id = EDU.customers.customer_id;sql…]()
 
 
@@ -97,83 +118,153 @@ ON EDU.orders.customer_id = EDU.customers.customer_id;sql…]()
 [Uploading SQLQuery3.1.sql…]
 
 BEGIN TRANSACTION
+
 SELECT *
+
 FROM EDU.courier_info
+
 INSERT INTO EDU.courier_info(
+
 		first_name,
+  
 		last_name,
+  
 		phone_number,
+  
 		delivery_type
+  
 	)
+ 
 SELECT 'Kate',
+
 	'Radriges',
+ 
 	14163203211,
+ 
 	'bike';
+ 
 INSERT INTO EDU.courier_info(
+
 		first_name,
+  
 		last_name,
+  
 		phone_number,
+  
 		delivery_type
 	)
+ 
 SELECT 'Jennifer',
+
 	'Gordon',
+ 
 	14163211252,
+ 
 	'car';
+ 
 INSERT INTO EDU.courier_info(
+
 		first_name,
+  
 		last_name,
+  
 		phone_number,
+  
 		delivery_type
 	)
+ 
 SELECT 'Mario',
+
 	'Lorenson',
+ 
 	14161224054,
+ 
 	'foot';
+ 
 INSERT INTO EDU.courier_info(
+
 		first_name,
+  
 		last_name,
+  
 		phone_number,
+  
 		delivery_type
+  
 	)
+ 
 SELECT 'Bella',
+
 	'Visputchu',
+ 
 	14167581967,
+ 
 	'foot';
+ 
 INSERT INTO EDU.courier_info(
+
 		first_name,
+  
 		last_name,
+  
 		phone_number,
+  
 		delivery_type
+  
 	)
+ 
 SELECT 'Erica',
+
 	'Evans',
+ 
 	14167618582,
+ 
 	'bike';
+ 
 SELECT *
+
 FROM EDU.courier_info ROLLBACK TRANSACTION
+
 SELECT *
+
 FROM EDU.courier_info()
 
 
 [Uploading SQLQuery3.2.sql…]()
 
 BEGIN TRANSACTION
+
 SELECT *
+
 FROM EDU.courier_info
+
 INSERT INTO EDU.courier_info(
+
 		first_name,
+  
 		last_name,
+  
 		phone_number,
+  
 		delivery_type
 	)
+ 
 VALUES ('Kate', 'Radriges', 14163203211, 'bike'),
+
 	('Jennifer', 'Gordon', 14163211252, 'car'),
+ 
 	('Mario', 'Lorenson', 14161224054, 'foot'),
+ 
 	('Bella', 'Visputchu', 14167581967, 'foot'),
+ 
 	('Erica', 'Evans', 14167618582, 'bike')
+ 
 SELECT *
+
 FROM EDU.courier_info ROLLBACK TRANSACTION
+
 SELECT *
+
 FROM EDU.courier_info
 
  4.Из списка доставок [Reskilling].[EDU].[delivery_list] выведи фамилию курьера [last_name] + имя курьера [first_name] (назови столбец Курьер) и количество его доставленных заказов. 
@@ -183,9 +274,13 @@ FROM EDU.courier_info
 [Uploading SQLQuery4.
 
 SELECT CONCAT(EDU.courier_info.last_name,' ' ,EDU.courier_info.first_name) AS ������, COUNT(EDU.delivery_list.courier_id) AS �����������
+
 FROM EDU.courier_info INNER JOIN EDU.delivery_list
+
 ON EDU.courier_info.courier_id = EDU.delivery_list.courier_id
+
 WHERE taken = 'YES'
+
 GROUP BY EDU.courier_info.first_name ,EDU.courier_info.last_name;1.sql…]()
 
 
@@ -196,13 +291,21 @@ GROUP BY EDU.courier_info.first_name ,EDU.courier_info.last_name;1.sql…]()
 [Uploading SQLQuery5.1.sql…]()
 
 SELECT EDU.products.menu_name,
+
 	CASE
+ 
 		WHEN SUM(EDU.orders_products.quantity) > 3 THEN '������� �����'
+  
 		ELSE '������ �����'
+  
 	END AS 'Product_demand'
+ 
 FROM EDU.products
+
 	INNER JOIN EDU.orders_products ON EDU.products.product_id = EDU.orders_products.product_id
+ 
 GROUP BY EDU.products.menu_name
+
 ORDER BY Product_demand ASC;
 
 
